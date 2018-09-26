@@ -25,7 +25,12 @@
     <img src="https://gitlab.com/codevski/toswift/badges/master/coverage.svg"
       alt="Test Coverage" />
   </a>
-  <!-- Standard -->
+  <!-- iOS -->
+  <a href="#">
+    <img src="https://img.shields.io/badge/iOS-passed-brightgreen.svg"
+      alt="iOS" />
+  </a>
+  <!-- Android -->
   <a href="#">
     <img src="https://img.shields.io/badge/android-coming%20soon-red.svg"
       alt="Android" />
