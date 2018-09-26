@@ -12,45 +12,47 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var table: UITableView!
     
-    var totalItems = UserDefaults.standard.array(forKey: "items")
+    var items:[String] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return totalItems?.count ?? 0
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
         
-        cell.textLabel?.text = (totalItems![indexPath.row] as! String)
+        cell.textLabel?.text = items[indexPath.row]
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCell.EditingStyle.delete) {
-            print("Need To Delete \(totalItems![indexPath.row])")
-            totalItems!.remove(at: indexPath.row)
-            UserDefaults.standard.set(totalItems, forKey: "items")
-            viewDidAppear(true)
+            
+            items.remove(at: indexPath.row)
+            
+            UserDefaults.standard.set(items, forKey: "items")
+            
+            self.table.reloadData()
         }
-    }
-    
-    func updateItems() {
-        totalItems = UserDefaults.standard.array(forKey: "items")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("UPDATING 1")
-        updateItems()
-        self.table.reloadData()
+        let itemsObject = UserDefaults.standard.object(forKey: "items")
         
+        if let tempItems = itemsObject as? [String] {
+            items = tempItems
+        }
+        self.table.reloadData()
+
     }
 
 

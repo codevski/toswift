@@ -12,33 +12,28 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var itemInput: UITextField!
     
-    var items = [String]()
-    
     @IBAction func add(_ sender: Any) {
-        print("Added Item")
+        let itemsObject = UserDefaults.standard.object(forKey: "items")
         
-        if let item = itemInput.text {
-            print("append")
+        var items:[String]
+        
+        if let tempItems = itemsObject as? [String] {
+            items = tempItems
             
-            items.append(item)
-            
-            UserDefaults.standard.set(items, forKey: "items")
-            
-            itemInput.text = ""
+            items.append(itemInput.text!)
+        } else {
+            items = [itemInput.text!]
         }
         
+        UserDefaults.standard.set(items, forKey: "items")
         
-        
+        // Reset the Text Field
+        itemInput.text = ""
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-//        UserDefaults.standard.removeObject(forKey: "items")
-        if UserDefaults.standard.array(forKey: "items") != nil {
-            items = (UserDefaults.standard.array(forKey: "items") as? Array)!
-        }
         
     }
     
@@ -46,11 +41,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)
-         print(items)
-        
-        if let test = UserDefaults.standard.array(forKey: "items") {
-            print(test)
-        }
         
     }
     
@@ -61,16 +51,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("UPDATING 2")
-        print(UserDefaults.standard.array(forKey: "items"))
-        
-        if UserDefaults.standard.array(forKey: "items") != nil {
-            items = (UserDefaults.standard.array(forKey: "items") as? Array)!
-        }
-    }
-
 
 }
 
