@@ -1,7 +1,7 @@
-<h1 align="center">DèChain</h1>
+<h1 align="center">ToSwift</h1>
 
 <div align="center">
-  <strong>ToSwift</strong>
+  <strong>A Bamello Project</strong>
 </div>
 <div align="center">
   A simple <code>iOS</code> Shopping List app written in Swift 4 
