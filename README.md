@@ -1,7 +1,7 @@
-<h1 align="center">DèChain</h1>
+<h1 align="center">ToSwift</h1>
 
 <div align="center">
-  <strong>ToSwift</strong>
+  <strong>A Bamello Project</strong>
 </div>
 <div align="center">
   A simple <code>iOS</code> Shopping List app written in Swift 4 
@@ -25,7 +25,12 @@
     <img src="https://gitlab.com/codevski/toswift/badges/master/coverage.svg"
       alt="Test Coverage" />
   </a>
-  <!-- Standard -->
+  <!-- iOS -->
+  <a href="#">
+    <img src="https://img.shields.io/badge/iOS-passed-brightgreen.svg"
+      alt="iOS" />
+  </a>
+  <!-- Android -->
   <a href="#">
     <img src="https://img.shields.io/badge/android-coming%20soon-red.svg"
       alt="Android" />
